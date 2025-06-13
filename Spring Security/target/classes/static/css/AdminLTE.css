@@ -1,0 +1,53 @@
+/* AdminLTE.css */
+
+body {
+    background-color: #f4f4f4; /* 页面背景色 */
+}
+
+/* 侧边栏样式 */
+.main-sidebar {
+    background-color: #222d32; /* 侧边栏背景色 */
+    color: #b8c7ce; /* 侧边栏文字颜色 */
+    min-height: 100vh; /* 侧边栏最小高度 */
+}
+
+.sidebar-menu > li > a {
+    color: #b8c7ce; /* 菜单项颜色 */
+    padding: 10px; /* 菜单内边距 */
+    display: block; /* 块元素 */
+}
+
+.sidebar-menu > li > a:hover {
+    background-color: #1e282c; /* 悬停时的背景色 */
+    color: #ffffff; /* 悬停时的文字颜色 */
+}
+
+/* 内容区域样式 */
+.content-wrapper {
+    padding: 15px; /* 内容区域内边距 */
+}
+
+/* 卡片样式 */
+.box {
+    background-color: #ffffff; /* 卡片背景色 */
+    border: 1px solid #ddd; /* 边框 */
+    border-radius: 4px; /* 圆角 */
+    padding: 15px; /* 内边距 */
+    margin-bottom: 15px; /* 底部外边距 */
+}
+
+/* 调整表格样式 */
+.table-bordered {
+    border: 1px solid #ddd; /* 边框 */
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #ddd; /* 边框 */
+}
+
+/* 响应式隐藏侧边栏菜单在小屏幕上 */
+@media (max-width: 768px) {
+    .sidebar-menu {
+        display: none; /* 在小屏幕上隐藏侧边栏菜单 */
+    }
+}

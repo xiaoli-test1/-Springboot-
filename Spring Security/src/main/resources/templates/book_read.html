@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${book.title}">阅读图书</title>
+    <link rel="stylesheet" th:href="@{/static/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/static/css/AdminLTE.css}">
+    <link rel="stylesheet" th:href="@{/static/css/custom.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3 class="card-title" th:text="${book.title}">图书标题</h3>
+                            <a th:href="@{/book/list}" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> 返回列表
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="book-meta mb-4">
+                            <p class="text-muted">
+                                <span th:text="${book.author}">作者</span> 著 |
+                                <span th:text="${book.publisher}">出版社</span> 出版 |
+                                <span th:text="${publishDate}">出版日期</span>
+                            </p>
+                        </div>
+                        
+                        <div class="book-cover mb-4 text-center">
+                            <img th:src="${book.coverUrl != null ? book.coverUrl : '/static/images/default_cover.jpg'}" alt="封面" class="book-cover">
+                        </div>
+                        
+                        <div class="book-content" th:text="${book.content}">
+                            图书内容
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html> 

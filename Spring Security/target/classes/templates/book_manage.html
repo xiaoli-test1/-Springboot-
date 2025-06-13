@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书管理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+<div class="container mx-auto py-8 px-4">
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-bold text-gray-800">图书列表</h2>
+            <div sec:authorize="hasRole('ADMIN')">
+                <a th:href="@{/book/admin/add}" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md flex items-center">
+                    <i class="fas fa-plus mr-2"></i> 添加图书
+                </a>
+            </div>
+        </div>
+        <table class="w-full border-collapse border border-gray-300">
+            <thead class="bg-gray-200">
+            <tr>
+                <th class="border border-gray-300 py-2 px-4 text-left">ID</th>
+                <th class="border border-gray-300 py-2 px-4 text-left">封面</th>
+                <th class="border border-gray-300 py-2 px-4 text-left">标题</th>
+                <th class="border border-gray-300 py-2 px-4 text-left">作者</th>
+                <th class="border border-gray-300 py-2 px-4 text-left">出版社</th>
+                <th class="border border-gray-300 py-2 px-4 text-left">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}" class="hover:bg-gray-100">
+                <td class="border border-gray-300 py-2 px-4">[[${book.id}]]</td>
+                <td class="border border-gray-300 py-2 px-4">
+                    <img th:src="${book.coverUrl != null ? book.coverUrl : 'https://picsum.photos/80/120'}" alt="封面" class="w-20 h-30 object-cover">
+                </td>
+                <td class="border border-gray-300 py-2 px-4">[[${book.title}]]</td>
+                <td class="border border-gray-300 py-2 px-4">[[${book.author}]]</td>
+                <td class="border border-gray-300 py-2 px-4">[[${book.publisher}]]</td>
+                <td class="border border-gray-300 py-2 px-4">
+                    <a th:href="@{/book/admin/edit/{id}(id=${book.id})}" class="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-3 rounded-md mr-2 flex items-center">
+                        <i class="fas fa-edit mr-1"></i> 编辑
+                    </a>
+                    <a th:href="@{/book/admin/delete/{id}(id=${book.id})}" class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md flex items-center">
+                        <i class="fas fa-trash mr-1"></i> 删除
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

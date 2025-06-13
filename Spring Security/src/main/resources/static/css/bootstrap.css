@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.sui-form {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px; /* 确保宽度足够容纳输入框 */
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.input-prepend {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.add-on {
+    position: absolute;
+    left: 10px;
+    top: 12px; /* 调整位置以防止覆盖文本框 */
+    color: #666;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 30px); /* 留出左侧的空间放置占位符 */
+    padding: 10px 10px; /* 确保内边距不会造成问题 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px; /* 添加顶部间距以分隔占位符和输入框 */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.logined {
+    text-align: center;
+}
+
+.sui-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* 使按钮宽度自适应 */
+}
+
+.sui-btn:hover {
+    background-color: #c82333;
+}

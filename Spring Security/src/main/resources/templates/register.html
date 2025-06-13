@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/css/AdminLTE.css">
+    <link rel="stylesheet" href="/static/css/custom.css">
+</head>
+<body class="hold-transition register-page">
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="/"><b>图书管理系统</b></a>
+        </div>
+
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg">注册新用户</p>
+
+                <form th:action="@{/user/register}" method="post" th:object="${registerDTO}">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" th:field="*{username}" placeholder="用户名">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" th:field="*{password}" placeholder="密码">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" th:field="*{confirmPassword}" placeholder="确认密码">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-danger" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></div>
+
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" th:field="*{email}" placeholder="邮箱">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" th:field="*{phone}" placeholder="手机号">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-phone"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                                <label for="agreeTerms">
+                                    我同意 <a href="#">服务条款</a>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">注册</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="social-auth-links text-center">
+                    <p>- 或者 -</p>
+                    <a href="/loginview" class="btn btn-block btn-primary">
+                        <i class="fas fa-sign-in-alt mr-2"></i> 已有账号？立即登录
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

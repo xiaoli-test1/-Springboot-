@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书列表</title>
+    <link rel="stylesheet" th:href="@{/static/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/static/css/AdminLTE.css}">
+    <link rel="stylesheet" th:href="@{/static/css/custom.css}">
+</head>
+<body>
+<div class="container">
+    <div class="search-box">
+        <input type="text" placeholder="搜索图书..." id="searchInput">
+        <i class="fas fa-search"></i>
+    </div>
+    <div class="book-list">
+        <div class="book-card" th:each="book : ${books}">
+            <img th:src="${book.coverUrl != null ? book.coverUrl : '/static/images/default_cover.jpg'}" alt="封面" class="book-cover">
+            <div class="book-info">
+                <h3 class="book-title" th:text="${book.title}"></h3>
+                <p class="book-author" th:text="${book.author}"></p>
+                <p class="book-publisher" th:text="${#dates.format(book.publishDate, 'yyyy-MM-dd')}"></p>
+                <a th:href="@{/book/read/{id}(id=${book.id})}" class="btn bg-olive read-btn">阅读</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#searchInput').on('input', function () {
+            var searchText = $(this).val().toLowerCase();
+            $('.book-card').each(function () {
+                var title = $(this).find('.book-title').text().toLowerCase();
+                var author = $(this).find('.book-author').text().toLowerCase();
+                var publisher = $(this).find('.book-publisher').text().toLowerCase();
+                if (title.includes(searchText) || author.includes(searchText) || publisher.includes(searchText)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

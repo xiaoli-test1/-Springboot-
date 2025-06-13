@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${book != null ? '编辑图书' : '添加图书'}">添加/编辑图书</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+<div class="container mx-auto py-8 px-4">
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4" th:text="${book != null ? '编辑图书' : '添加图书'}">添加/编辑图书</h2>
+        <form th:action="@{${book != null ? '/book/admin/edit' : '/book/admin/add'}}" method="post" enctype="multipart/form-data" th:object="${book}">
+            <input type="hidden" th:if="${book != null}" th:field="*{id}">
+            <div class="mb-4">
+                <label for="title" class="block text-sm font-medium text-gray-700">标题</label>
+                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-blue-500 focus:border-blue-500" id="title" th:field="*{title}" required>
+            </div>
+            <div class="mb-4">
+                <label for="author" class="block text-sm font-medium text-gray-700">作者</label>
+                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-blue-500 focus:border-blue-500" id="author" th:field="*{author}" required>
+            </div>
+            <div class="mb-4">
+                <label for="publisher" class="block text-sm font-medium text-gray-700">出版社</label>
+                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-blue-500 focus:border-blue-500" id="publisher" th:field="*{publisher}" required>
+            </div>
+            <div class="mb-4">
+                <label for="isbn" class="block text-sm font-medium text-gray-700">ISBN</label>
+                <input type="text" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-blue-500 focus:border-blue-500" id="isbn" th:field="*{isbn}" required>
+            </div>
+            <div class="mb-4">
+                <label for="publicationDate" class="block text-sm font-medium text-gray-700">出版日期</label>
+                <input type="date" class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-blue-500 focus:border-blue-500" id="publicationDate" th:field="*{publishDate}" required>
+            </div>
+            <div class="mb-4">
+                <label for="cover" class="block text-sm font-medium text-gray-700">封面照片</label>
+                <input type="file" class="mt-1 block w-full" id="cover" name="cover" accept="image/jpeg,image/png">
+            </div>
+            <div class="mb-4">
+                <label for="content" class="block text-sm font-medium text-gray-700">内容</label>
+                <textarea class="mt-1 block w-full border border-gray-300 rounded-md py-2 px-3 focus:ring-blue-500 focus:border-blue-500" id="content" th:field="*{content}" rows="10" required></textarea>
+            </div>
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md mr-2">保存</button>
+                <a th:href="@{/book/admin/manage}" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md">取消</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

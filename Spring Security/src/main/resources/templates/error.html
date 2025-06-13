@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>错误页面</title>
+</head>
+<body>
+<h1>发生错误</h1>
+<p th:text="${errorMessage != null? errorMessage : '很抱歉，系统出现了一些问题，请稍后再试。'}"></p>
+</body>
+</html>
